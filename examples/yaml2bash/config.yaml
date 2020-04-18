@@ -1,0 +1,30 @@
+# This is config for NLP service. All configuration MUST be setup heree
+
+# SECTION GLOBAL VARIABLE
+global_env: &global_env
+  CUDA_VISIBLE_DEVICES: "-1"
+  OPENBLAS_NUM_THREADS: 2
+
+# SECTION GENERAL CONFIG
+name: &name project_name
+
+# Host and Port of service
+host: "0.0.0.0"
+port: "9191"
+number_worker: 2 # Number serving worker
+
+# Path config
+source_path: &source_path /path/to/project/
+pid_path: &pid_path !JoinPath [*source_path, tmp/pid]
+logger_path: !JoinPath &logger_path [*source_path, "tmp/logs"]
+
+# BASHSHELL CONFIG
+# All variable in bash scope will be parsing into run.sh
+# Variable in global_env will be exported globally, otherwise locally
+# If changing keyname "bash". Please go to file yaml2bash.py and adjust compatible key
+bash:
+  name: *name
+  source_path: *source_path
+  pid_path: *pid_path
+  logger_path: *logger_path
+  global_env: *global_env
