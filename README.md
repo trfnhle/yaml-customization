@@ -2,6 +2,7 @@
 Some helpful tool to working with YAML
 
 # Install
+- `git clone https://github.com/l4zyf9x/yaml-customization.git` and `cd yaml-customization`
 - `pip insall -e .`
 - Then `cd examples/yaml2bash` to run example
 - Run `bash execute.sh`
